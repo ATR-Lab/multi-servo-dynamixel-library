@@ -1,0 +1,27 @@
+digraph G {
+"left_inner_rear_track_link" -> "left_inner_track_base_link"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1561126321.137 sec old)\nBuffer length: 0.000 sec\n"];
+"left_outer_track_front_link" -> "left_out_track_base_link"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1561126321.137 sec old)\nBuffer length: 0.000 sec\n"];
+"right_inner_track_link" -> "right_inner_track_base_link"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1561126321.137 sec old)\nBuffer length: 0.000 sec\n"];
+"right_outer_track_front_link" -> "right_outer_track_base_link"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1561126321.137 sec old)\nBuffer length: 0.000 sec\n"];
+"base_link" -> "torso_upper_link"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1561126321.137 sec old)\nBuffer length: 0.000 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1561126321.137"[ shape=plaintext ] ;
+ }->"left_inner_rear_track_link";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1561126321.137"[ shape=plaintext ] ;
+ }->"left_outer_track_front_link";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1561126321.137"[ shape=plaintext ] ;
+ }->"right_inner_track_link";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1561126321.137"[ shape=plaintext ] ;
+ }->"right_outer_track_front_link";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1561126321.137"[ shape=plaintext ] ;
+ }->"base_link";
+}

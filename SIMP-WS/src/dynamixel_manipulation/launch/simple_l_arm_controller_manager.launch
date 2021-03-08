@@ -1,0 +1,19 @@
+<!-- -*- mode: XML -*- -->
+
+<launch>
+  <node name="dyno_manager" 
+    pkg="dynamixel_manipulation"
+    type="dynomix_controller_manager.py" 
+    required="true" output="screen">
+    <rosparam>
+      namespace: l_arms_bot
+      serial_ports:
+        l_arm_port:
+          port_name: "/dev/ttyUSB0"
+          baud_rate: 1000000
+          min_motor_id: 1
+          max_motor_id: 30
+          update_rate: 20
+    </rosparam>
+  </node>
+</launch>

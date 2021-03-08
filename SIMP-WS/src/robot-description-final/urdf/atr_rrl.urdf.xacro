@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<robot
+  xmlns:xacro="http://www.ros.org/wiki/xacro"
+  name="atr_robot">
+
+  <xacro:include filename="$(find atr_rrl_description)/urdf/tank.urdf.xacro"/>
+  <xacro:include filename="$(find atr_rrl_description)/urdf/astra.urdf.xacro" />
+
+  <xacro:asus_camera name="camera" parent="base_link">
+    <origin xyz="0.3 0.0 0.2" rpy="0 0 0"/>
+  </xacro:asus_camera>
+
+</robot>

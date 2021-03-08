@@ -1,0 +1,24 @@
+[submodule "src/openmanipulator/DynamixelSDK"]
+	path = src/openmanipulator/DynamixelSDK
+	url = https://github.com/ROBOTIS-GIT/DynamixelSDK.git
+[submodule "src/openmanipulator/dynamixel-workbench"]
+	path = src/openmanipulator/dynamixel-workbench
+	url = https://github.com/ROBOTIS-GIT/dynamixel-workbench.git
+[submodule "src/openmanipulator/ynamixel-workbench-msgs"]
+	path = src/openmanipulator/ynamixel-workbench-msgs
+	url = https://github.com/ROBOTIS-GIT/dynamixel-workbench-msgs.git
+[submodule "src/openmanipulator/open_manipulator_pro"]
+	path = src/openmanipulator/open_manipulator_pro
+	url = https://github.com/ROBOTIS-GIT/open_manipulator_pro.git
+[submodule "src/openmanipulator/open_manipulator_msgs"]
+	path = src/openmanipulator/open_manipulator_msgs
+	url = https://github.com/ROBOTIS-GIT/open_manipulator_msgs.git
+[submodule "src/openmanipulator/open_manipulator_pro_simulations"]
+	path = src/openmanipulator/open_manipulator_pro_simulations
+	url = https://github.com/ROBOTIS-GIT/open_manipulator_pro_simulations.git
+[submodule "src/openmanipulator/robotis_manipulator"]
+	path = src/openmanipulator/robotis_manipulator
+	url = https://github.com/ROBOTIS-GIT/robotis_manipulator.git
+[submodule "roboclaw_driver"]
+	path = src/roboclaw_driver
+	url = https://github.com/sheaffej/roboclaw_driver.git

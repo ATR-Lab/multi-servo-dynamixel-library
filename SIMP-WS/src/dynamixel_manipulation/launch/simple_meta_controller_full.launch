@@ -1,0 +1,30 @@
+<launch>
+<!-- Start tilt joint controller -->
+  <rosparam file="$(find dynamixel_manipulation)/config/l_arm_joint_meta_controllers.yaml" command="load"/>
+  <node name="controller_spawner" pkg="dynamixel_manipulation" type="dynomix_controller_spawner.py"
+        args="--manager=l_arms_bot
+              --port l_arm_port
+              l_shoulder_pitch_controller
+              l_shoulder_pan_controller
+              l_elbow_pan_controller
+              l_foream_roll_controller
+              l_wrist_pitch_controller
+              l_wrist_roll_controller
+              "
+        output="screen"/>
+        
+<!-- Start joints trajectory controller controller -->
+  <rosparam file="$(find dynamixel_manipulation)/config/l_arm_meta_controller_spec.yaml" command="load"/>
+  <node name="controller_spawner_meta" pkg="dynamixel_manipulation" type="dynomix_controller_spawner.py"
+        args="--manager=l_arms_bot
+              --type=meta
+              l_arm_meta_controller
+              l_shoulder_pitch_controller
+              l_shoulder_pan_controller
+              l_elbow_pan_controller
+              l_foream_roll_controller
+              l_wrist_pitch_controller
+              l_wrist_roll_controller
+              "
+        output="screen"/>
+</launch>

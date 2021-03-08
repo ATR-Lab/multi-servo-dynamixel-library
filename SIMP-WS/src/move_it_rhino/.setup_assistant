@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: robot-description-rhino
+    relative_path: urdf/openmanipulator_with_gripper.urdf.xacro
+    xacro_args: "--inorder "
+  SRDF:
+    relative_path: config/open_manipulator_pro.srdf
+  CONFIG:
+    author_name: Irvin Boss
+    author_email: irvin.carden@gmail.com
+    generated_timestamp: 1561494548
