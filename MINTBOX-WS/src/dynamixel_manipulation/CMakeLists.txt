@@ -60,6 +60,7 @@ add_service_files(
    StartController.srv
    StopController.srv
    RestartController.srv
+   SetSpeed.srv
 #   Service2.srv
 )
 

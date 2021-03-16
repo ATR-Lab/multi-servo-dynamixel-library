@@ -1,7 +1,7 @@
 import rospy
 from std_msgs.msg import Float64
 from sensor_msgs.msg import JointState
-from dynamixel_controllers.srv import SetSpeed
+from dynamixel_manipulation.srv import SetSpeed
 
 class DynamixelJointController:
   """

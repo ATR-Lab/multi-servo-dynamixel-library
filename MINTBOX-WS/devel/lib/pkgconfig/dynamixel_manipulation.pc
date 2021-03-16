@@ -1,0 +1,8 @@
+prefix=/home/marco/Desktop/MINTBOX/multi-servo-dynamixel-library/MINTBOX-WS/devel
+
+Name: dynamixel_manipulation
+Description: Description of dynamixel_manipulation
+Version: 0.0.0
+Cflags: -I/home/marco/Desktop/MINTBOX/multi-servo-dynamixel-library/MINTBOX-WS/devel/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime
