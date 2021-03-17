@@ -1,0 +1,5 @@
+Instructions for this I guess lmao!
+Code files are in src. Catalogue stuff is in catalogue.js (lol).
+To run it, download Node.js and get npm/npx. Get download React using npm, then just run 'npm start' to run the file.
+To terminate the file, just type 'npx kill-port 3000'. If your file is not running in the port 3000, put whatever port instead of 3000.
+If stuck, ask me.
