@@ -91,13 +91,18 @@ class DynomixSerialProxy():
 
     if model_number == H54_200_S500_R_MODEL_NUMBER:
       
-      angle_l = self.packet_handler.readTxRx(self.port_handler, motor_id, H54_200_S500_R_ANGLE_LIMIT_L, H54_200_S500_R_ANGLE_LIMIT_L_LENGTH)
-      angle_h = self.packet_handler.readTxRx(self.port_handler, motor_id, H54_200_S500_R_ANGLE_LIMIT_H, H54_200_S500_R_ANGLE_LIMIT_H_LENGTH)
+      angle_l_res = self.packet_handler.readTxRx(self.port_handler, motor_id, H54_200_S500_R_ANGLE_LIMIT_L, H54_200_S500_R_ANGLE_LIMIT_L_LENGTH)
+      angle_l = angle_l_res[0][0]
+      angle_h_res = self.packet_handler.readTxRx(self.port_handler, motor_id, H54_200_S500_R_ANGLE_LIMIT_H, H54_200_S500_R_ANGLE_LIMIT_H_LENGTH)
+      angle_h = angle_h_res[0][0]
       angles = {'min': angle_l, 'max': angle_h}
 
-      voltage = self.packet_handler.readTxRx(self.port_handler, motor_id, H54_200_S500_R_PRESENT_VOLTAGE, H54_200_S500_R_PRESENT_VOLTAGE_LENGTH)
-      voltage_l = self.packet_handler.readTxRx(self.port_handler, motor_id, H54_200_S500_R_PRESENT_VOLTAGE_L, H54_200_S500_R_PRESENT_VOLTAGE_L_LENGTH)
-      voltage_h = self.packet_handler.readTxRx(self.port_handler, motor_id, H54_200_S500_R_PRESENT_VOLTAGE_H, H54_200_S500_R_PRESENT_VOLTAGE_H_LENGTH) 
+      voltage_res = self.packet_handler.readTxRx(self.port_handler, motor_id, H54_200_S500_R_PRESENT_VOLTAGE, H54_200_S500_R_PRESENT_VOLTAGE_LENGTH)
+      voltage = voltage_res[0][0]
+      voltage_l_res = self.packet_handler.readTxRx(self.port_handler, motor_id, H54_200_S500_R_PRESENT_VOLTAGE_L, H54_200_S500_R_PRESENT_VOLTAGE_L_LENGTH)
+      voltage_l = voltage_l_res[0][0]
+      voltage_h_res = self.packet_handler.readTxRx(self.port_handler, motor_id, H54_200_S500_R_PRESENT_VOLTAGE_H, H54_200_S500_R_PRESENT_VOLTAGE_H_LENGTH) 
+      voltage_h = voltage_h_res[0][0]
       voltages = {'min': voltage_l, 'max': voltage_h}
     
       rospy.set_param('dynamixel/%s/%d/model_number' %(self.port_namespace, motor_id), model_number)
@@ -130,8 +135,16 @@ class DynomixSerialProxy():
       # keep some parameters around for diagnostics
       self.motor_static_info[motor_id] = {}
       self.motor_static_info[motor_id]['model'] = DXL_MODEL_TO_PARAMS[model_number]['name']
-      self.motor_static_info[motor_id]['firmware'] = self.dxl_io.get_firmware_version(motor_id)
-      self.motor_static_info[motor_id]['delay'] = self.dxl_io.get_return_delay_time(motor_id)
+
+      # TODO: Implement sdk_io calls
+      # dxl_io calls
+      # self.motor_static_info[motor_id]['firmware'] = self.dxl_io.get_firmware_version(motor_id)
+      # self.motor_static_info[motor_id]['delay'] = self.dxl_io.get_return_delay_time(motor_id)
+
+      # sdk_io calls: sdk_io
+      # self.motor_static_info[motor_id]['firmware'] = sdk_io.get_firmware_version(motor_id)
+      # self.motor_static_info[motor_id]['delay'] = sdk_io.get_return_delay_time(motor_id)  
+
       self.motor_static_info[motor_id]['min_angle'] = angles['min']
       self.motor_static_info[motor_id]['max_angle'] = angles['max']
       self.motor_static_info[motor_id]['min_voltage'] = voltages['min']
@@ -292,7 +305,8 @@ class DynomixSerialProxy():
       self.motor_static_info[motor_id]['max_angle'] = angles['max']
       self.motor_static_info[motor_id]['min_voltage'] = voltages['min']
       self.motor_static_info[motor_id]['max_voltage'] = voltages['max']
-
+      # DEBUG CODE
+      rospy.logwarn(self.motor_static_info[motor_id]['max_voltage'])
 
     # angles = self.dxl_io.get_angle_limits(motor_id)
     # voltage = self.dxl_io.get_voltage(motor_id)

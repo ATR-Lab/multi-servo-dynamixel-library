@@ -154,7 +154,7 @@ H54_200_S500_R_PRESENT_POSITION_LENGTH      = 4
 H54_200_S500_R_PRESENT_VELOCITY_LENGTH      = 4
 H54_200_S500_R_PRESENT_CURRENT_LENGTH       = 2
 H54_200_S500_R_PRESENT_VOLTAGE_LENGTH       = 2
-H54_200_S500_R_PRESENT_VOLTAGE_L_LENGHT     = 2
+H54_200_S500_R_PRESENT_VOLTAGE_L_LENGTH     = 2
 H54_200_S500_R_PRESENT_VOLTAGE_H_LENGTH     = 2
 H54_200_S500_R_PRESENT_TEMPERATURE_LENGTH   = 2
 
@@ -299,7 +299,7 @@ DXL_MODEL_TO_PARAMS = \
   },
   54024: {
     "name": "H54_200_S500_R_2",
-    'encoder_resoution': 501923,
+    'encoder_resolution': 501923,
     'range_degrees': 360,        # In case of the Position Control Mode(Joint Mode) that rotates less than 360 degrees, any invalid Homing Offset(20) values will be ignored(valid range : -1,024 ~ 1,024).
     'torque_per_volt': 44.7 / 12.0,  # TODO: Needs to be completed, values not found in specs sheets (voltages might be different)
     'velocity_per_volt': (29.0 * RPM_TO_RADSEC) / 12.0, # TODO: Needs to be completed, values not found in specs sheets (voltages might be different)

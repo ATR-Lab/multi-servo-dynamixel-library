@@ -268,7 +268,7 @@ if __name__ == '__main__':
 
         if not args.local:
             # environment at generation time
-            CMAKE_PREFIX_PATH = r'/home/marco/Desktop/SIMP-system/multi-servo-dynamixel-library/MINTBOX-WS/devel;/home/marco/Desktop/new_robocup/robocup_irl/devel;/opt/ros/melodic'.split(';')
+            CMAKE_PREFIX_PATH = r'/home/marcodotio/catkin_ws_dynocon/devel;/opt/ros/kinetic'.split(';')
         else:
             # don't consider any other prefix path than this one
             CMAKE_PREFIX_PATH = []

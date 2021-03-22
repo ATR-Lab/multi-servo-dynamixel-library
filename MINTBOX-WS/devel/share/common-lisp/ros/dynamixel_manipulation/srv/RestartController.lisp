@@ -195,10 +195,10 @@
   "94c76c2df56346fcaa2611bdac54f434")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<RestartController-request>)))
   "Returns full string definition for message of type '<RestartController-request>"
-  (cl:format cl:nil "string port_name            # serial port that this controller is connected to~%string package_path         # path to ROS package containing controller module~%string module_name          # name of the controller module within that package~%string class_name           # controller class name within that module~%string controller_name      # path to controller config parameters on param server~%string[] dependencies       # optional, list names of all controllers this controller depends on~%~%~%"))
+  (cl:format cl:nil "string port_name~%string package_path~%string module_name~%string class_name~%string controller_name~%string[] dependencies~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'RestartController-request)))
   "Returns full string definition for message of type 'RestartController-request"
-  (cl:format cl:nil "string port_name            # serial port that this controller is connected to~%string package_path         # path to ROS package containing controller module~%string module_name          # name of the controller module within that package~%string class_name           # controller class name within that module~%string controller_name      # path to controller config parameters on param server~%string[] dependencies       # optional, list names of all controllers this controller depends on~%~%~%"))
+  (cl:format cl:nil "string port_name~%string package_path~%string module_name~%string class_name~%string controller_name~%string[] dependencies~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <RestartController-request>))
   (cl:+ 0
      4 (cl:length (cl:slot-value msg 'port_name))

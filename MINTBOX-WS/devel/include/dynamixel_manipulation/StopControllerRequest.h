@@ -61,20 +61,6 @@ ros::message_operations::Printer< ::dynamixel_manipulation::StopControllerReques
 return s;
 }
 
-
-template<typename ContainerAllocator1, typename ContainerAllocator2>
-bool operator==(const ::dynamixel_manipulation::StopControllerRequest_<ContainerAllocator1> & lhs, const ::dynamixel_manipulation::StopControllerRequest_<ContainerAllocator2> & rhs)
-{
-  return lhs.controller_name == rhs.controller_name;
-}
-
-template<typename ContainerAllocator1, typename ContainerAllocator2>
-bool operator!=(const ::dynamixel_manipulation::StopControllerRequest_<ContainerAllocator1> & lhs, const ::dynamixel_manipulation::StopControllerRequest_<ContainerAllocator2> & rhs)
-{
-  return !(lhs == rhs);
-}
-
-
 } // namespace dynamixel_manipulation
 
 namespace ros
@@ -82,6 +68,12 @@ namespace ros
 namespace message_traits
 {
 
+
+
+// BOOLTRAITS {'IsFixedSize': False, 'IsMessage': True, 'HasHeader': False}
+// {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg']}
+
+// !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
 
 
@@ -146,8 +138,8 @@ struct Definition< ::dynamixel_manipulation::StopControllerRequest_<ContainerAll
 {
   static const char* value()
   {
-    return "string controller_name\n"
-;
+    return "string controller_name\n\
+";
   }
 
   static const char* value(const ::dynamixel_manipulation::StopControllerRequest_<ContainerAllocator>&) { return value(); }

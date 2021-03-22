@@ -3,7 +3,7 @@
 
 # since this file is sourced either use the provided _CATKIN_SETUP_DIR
 # or fall back to the destination set at configure time
-: ${_CATKIN_SETUP_DIR:=/home/marco/Desktop/MINTBOX/multi-servo-dynamixel-library/MINTBOX-WS/devel}
+: ${_CATKIN_SETUP_DIR:=/home/marcodotio/mint-ws/multi-servo-dynamixel-library/MINTBOX-WS/devel}
 CATKIN_SETUP_UTIL_ARGS="--extend --local"
 . "$_CATKIN_SETUP_DIR/setup.sh"
 unset CATKIN_SETUP_UTIL_ARGS

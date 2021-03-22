@@ -57,8 +57,8 @@ struct DataType< ::dynamixel_manipulation::SetSpeed > {
 };
 
 
-// service_traits::MD5Sum< ::dynamixel_manipulation::SetSpeedRequest> should match
-// service_traits::MD5Sum< ::dynamixel_manipulation::SetSpeed >
+// service_traits::MD5Sum< ::dynamixel_manipulation::SetSpeedRequest> should match 
+// service_traits::MD5Sum< ::dynamixel_manipulation::SetSpeed > 
 template<>
 struct MD5Sum< ::dynamixel_manipulation::SetSpeedRequest>
 {
@@ -72,8 +72,8 @@ struct MD5Sum< ::dynamixel_manipulation::SetSpeedRequest>
   }
 };
 
-// service_traits::DataType< ::dynamixel_manipulation::SetSpeedRequest> should match
-// service_traits::DataType< ::dynamixel_manipulation::SetSpeed >
+// service_traits::DataType< ::dynamixel_manipulation::SetSpeedRequest> should match 
+// service_traits::DataType< ::dynamixel_manipulation::SetSpeed > 
 template<>
 struct DataType< ::dynamixel_manipulation::SetSpeedRequest>
 {
@@ -87,8 +87,8 @@ struct DataType< ::dynamixel_manipulation::SetSpeedRequest>
   }
 };
 
-// service_traits::MD5Sum< ::dynamixel_manipulation::SetSpeedResponse> should match
-// service_traits::MD5Sum< ::dynamixel_manipulation::SetSpeed >
+// service_traits::MD5Sum< ::dynamixel_manipulation::SetSpeedResponse> should match 
+// service_traits::MD5Sum< ::dynamixel_manipulation::SetSpeed > 
 template<>
 struct MD5Sum< ::dynamixel_manipulation::SetSpeedResponse>
 {
@@ -102,8 +102,8 @@ struct MD5Sum< ::dynamixel_manipulation::SetSpeedResponse>
   }
 };
 
-// service_traits::DataType< ::dynamixel_manipulation::SetSpeedResponse> should match
-// service_traits::DataType< ::dynamixel_manipulation::SetSpeed >
+// service_traits::DataType< ::dynamixel_manipulation::SetSpeedResponse> should match 
+// service_traits::DataType< ::dynamixel_manipulation::SetSpeed > 
 template<>
 struct DataType< ::dynamixel_manipulation::SetSpeedResponse>
 {

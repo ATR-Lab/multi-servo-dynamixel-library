@@ -11,12 +11,12 @@ class StartControllerRequest(genpy.Message):
   _md5sum = "7785d708c83a180befd2fe3450dd9d41"
   _type = "dynamixel_manipulation/StartControllerRequest"
   _has_header = False  # flag to mark the presence of a Header object
-  _full_text = """string port_name            # serial port that this controller is connected to
-string package_path         # path to ROS package containing controller module
-string module_name          # name of the controller module within that package
-string class_name           # controller class name within that module
-string controller_name      # path to controller config parameters on param server
-string[] dependencies       # optional, list names of all controllers this controller depends on
+  _full_text = """string port_name
+string package_path
+string module_name
+string class_name
+string controller_name
+string[] dependencies
 """
   __slots__ = ['port_name','package_path','module_name','class_name','controller_name','dependencies']
   _slot_types = ['string','string','string','string','string','string[]']

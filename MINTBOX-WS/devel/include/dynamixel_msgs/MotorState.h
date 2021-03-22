@@ -106,29 +106,6 @@ ros::message_operations::Printer< ::dynamixel_msgs::MotorState_<ContainerAllocat
 return s;
 }
 
-
-template<typename ContainerAllocator1, typename ContainerAllocator2>
-bool operator==(const ::dynamixel_msgs::MotorState_<ContainerAllocator1> & lhs, const ::dynamixel_msgs::MotorState_<ContainerAllocator2> & rhs)
-{
-  return lhs.timestamp == rhs.timestamp &&
-    lhs.id == rhs.id &&
-    lhs.goal == rhs.goal &&
-    lhs.position == rhs.position &&
-    lhs.error == rhs.error &&
-    lhs.speed == rhs.speed &&
-    lhs.load == rhs.load &&
-    lhs.voltage == rhs.voltage &&
-    lhs.temperature == rhs.temperature &&
-    lhs.moving == rhs.moving;
-}
-
-template<typename ContainerAllocator1, typename ContainerAllocator2>
-bool operator!=(const ::dynamixel_msgs::MotorState_<ContainerAllocator1> & lhs, const ::dynamixel_msgs::MotorState_<ContainerAllocator2> & rhs)
-{
-  return !(lhs == rhs);
-}
-
-
 } // namespace dynamixel_msgs
 
 namespace ros
@@ -136,6 +113,12 @@ namespace ros
 namespace message_traits
 {
 
+
+
+// BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
+// {'dynamixel_msgs': ['/home/marcodotio/mint-ws/multi-servo-dynamixel-library/MINTBOX-WS/src/dynamixel_msgs/msg'], 'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg']}
+
+// !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
 
 
@@ -200,17 +183,17 @@ struct Definition< ::dynamixel_msgs::MotorState_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "float64 timestamp   # motor state is at this time\n"
-"int32 id            # motor id\n"
-"int32 goal          # commanded position (in encoder units)\n"
-"int32 position      # current position (in encoder units)\n"
-"int32 error         # difference between current and goal positions\n"
-"int32 speed         # current speed (0.111 rpm per unit)\n"
-"float64 load        # current load - ratio of applied torque over maximum torque\n"
-"float64 voltage     # current voltage (V)\n"
-"int32 temperature   # current temperature (degrees Celsius)\n"
-"bool moving         # whether the motor is currently in motion\n"
-;
+    return "float64 timestamp   # motor state is at this time\n\
+int32 id            # motor id\n\
+int32 goal          # commanded position (in encoder units)\n\
+int32 position      # current position (in encoder units)\n\
+int32 error         # difference between current and goal positions\n\
+int32 speed         # current speed (0.111 rpm per unit)\n\
+float64 load        # current load - ratio of applied torque over maximum torque\n\
+float64 voltage     # current voltage (V)\n\
+int32 temperature   # current temperature (degrees Celsius)\n\
+bool moving         # whether the motor is currently in motion\n\
+";
   }
 
   static const char* value(const ::dynamixel_msgs::MotorState_<ContainerAllocator>&) { return value(); }

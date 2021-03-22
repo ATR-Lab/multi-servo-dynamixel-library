@@ -57,8 +57,8 @@ struct DataType< ::dynamixel_manipulation::RestartController > {
 };
 
 
-// service_traits::MD5Sum< ::dynamixel_manipulation::RestartControllerRequest> should match
-// service_traits::MD5Sum< ::dynamixel_manipulation::RestartController >
+// service_traits::MD5Sum< ::dynamixel_manipulation::RestartControllerRequest> should match 
+// service_traits::MD5Sum< ::dynamixel_manipulation::RestartController > 
 template<>
 struct MD5Sum< ::dynamixel_manipulation::RestartControllerRequest>
 {
@@ -72,8 +72,8 @@ struct MD5Sum< ::dynamixel_manipulation::RestartControllerRequest>
   }
 };
 
-// service_traits::DataType< ::dynamixel_manipulation::RestartControllerRequest> should match
-// service_traits::DataType< ::dynamixel_manipulation::RestartController >
+// service_traits::DataType< ::dynamixel_manipulation::RestartControllerRequest> should match 
+// service_traits::DataType< ::dynamixel_manipulation::RestartController > 
 template<>
 struct DataType< ::dynamixel_manipulation::RestartControllerRequest>
 {
@@ -87,8 +87,8 @@ struct DataType< ::dynamixel_manipulation::RestartControllerRequest>
   }
 };
 
-// service_traits::MD5Sum< ::dynamixel_manipulation::RestartControllerResponse> should match
-// service_traits::MD5Sum< ::dynamixel_manipulation::RestartController >
+// service_traits::MD5Sum< ::dynamixel_manipulation::RestartControllerResponse> should match 
+// service_traits::MD5Sum< ::dynamixel_manipulation::RestartController > 
 template<>
 struct MD5Sum< ::dynamixel_manipulation::RestartControllerResponse>
 {
@@ -102,8 +102,8 @@ struct MD5Sum< ::dynamixel_manipulation::RestartControllerResponse>
   }
 };
 
-// service_traits::DataType< ::dynamixel_manipulation::RestartControllerResponse> should match
-// service_traits::DataType< ::dynamixel_manipulation::RestartController >
+// service_traits::DataType< ::dynamixel_manipulation::RestartControllerResponse> should match 
+// service_traits::DataType< ::dynamixel_manipulation::RestartController > 
 template<>
 struct DataType< ::dynamixel_manipulation::RestartControllerResponse>
 {

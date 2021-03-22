@@ -86,25 +86,6 @@ ros::message_operations::Printer< ::dynamixel_manipulation::StartControllerReque
 return s;
 }
 
-
-template<typename ContainerAllocator1, typename ContainerAllocator2>
-bool operator==(const ::dynamixel_manipulation::StartControllerRequest_<ContainerAllocator1> & lhs, const ::dynamixel_manipulation::StartControllerRequest_<ContainerAllocator2> & rhs)
-{
-  return lhs.port_name == rhs.port_name &&
-    lhs.package_path == rhs.package_path &&
-    lhs.module_name == rhs.module_name &&
-    lhs.class_name == rhs.class_name &&
-    lhs.controller_name == rhs.controller_name &&
-    lhs.dependencies == rhs.dependencies;
-}
-
-template<typename ContainerAllocator1, typename ContainerAllocator2>
-bool operator!=(const ::dynamixel_manipulation::StartControllerRequest_<ContainerAllocator1> & lhs, const ::dynamixel_manipulation::StartControllerRequest_<ContainerAllocator2> & rhs)
-{
-  return !(lhs == rhs);
-}
-
-
 } // namespace dynamixel_manipulation
 
 namespace ros
@@ -112,6 +93,12 @@ namespace ros
 namespace message_traits
 {
 
+
+
+// BOOLTRAITS {'IsFixedSize': False, 'IsMessage': True, 'HasHeader': False}
+// {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg']}
+
+// !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
 
 
@@ -176,13 +163,13 @@ struct Definition< ::dynamixel_manipulation::StartControllerRequest_<ContainerAl
 {
   static const char* value()
   {
-    return "string port_name            # serial port that this controller is connected to\n"
-"string package_path         # path to ROS package containing controller module\n"
-"string module_name          # name of the controller module within that package\n"
-"string class_name           # controller class name within that module\n"
-"string controller_name      # path to controller config parameters on param server\n"
-"string[] dependencies       # optional, list names of all controllers this controller depends on\n"
-;
+    return "string port_name\n\
+string package_path\n\
+string module_name\n\
+string class_name\n\
+string controller_name\n\
+string[] dependencies\n\
+";
   }
 
   static const char* value(const ::dynamixel_manipulation::StartControllerRequest_<ContainerAllocator>&) { return value(); }
