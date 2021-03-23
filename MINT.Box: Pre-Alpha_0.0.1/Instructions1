@@ -1,8 +1,0 @@
-Instructions for this I guess lmao!
-Code files are in src. Catalogue stuff is in catalogue.js (lol).
-To run it, download Node.js and get npm/npx. Get download React using npm, then just run 'npm start' to run the file.
-To terminate the file, just type 'npx kill-port 3000'. If your file is not running in the port 3000, put whatever port instead of 3000.
-If stuck, ask me.
-
-Welp, we don't have the files. To run the build, first install serve using 'npm install -g serve'. Then 'serve -s build' will run the
-web-app at localhost://5000. This should be copied to your clipboard so just post this into your browser and it should work. Huzzah!
