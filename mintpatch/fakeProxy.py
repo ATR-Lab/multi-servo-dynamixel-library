@@ -25,3 +25,5 @@ class DynomixSerialProxy():
     if(port_namespace=="port_2"):
       self.motors[0]=1
     #print("proxy init")
+  def __find_motors(self):
+    a=1
