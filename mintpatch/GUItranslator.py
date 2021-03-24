@@ -25,7 +25,7 @@ class GUITranslator:
         else:
             state='idle'
         
-        print(f'{idict["id"]} {state} {idict["voltage"]} {idict["temperature"]} {idict["position"]} {idict["speed"]}')    
+        print('{id} {state} {voltage} {temp} {pos} {speed}'.format(id=idict["id"],state=state,voltage=idict["voltage"],temp=idict["temperature"],pos={idict["position"]},speed=idict["speed"]))    
     
     #a function for updating all running servo motors.
     #TODO: Test once attached to moving servos. Cannot yet be debugged.
