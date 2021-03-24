@@ -19,8 +19,8 @@ class PortManager:
     """
     def __init__(self,_port_name, _setup_info):
         self.port_name=_port_name
-        self.wrapper=SDKSerialWrapper(f'/dev/{_port_name}',_setup_info["baudrate"])
-        self.proxy=DynomixSerialProxy(f"/dev/{_port_name}",_port_name, _setup_info["baudrate"],_setup_info["minID"],_setup_info["maxID"],_setup_info["updateRate"],_setup_info["diagnosticsRate"])
+        self.wrapper=SDKSerialWrapper('/dev/{_port_name}'.format(_port_name=_port_name),_setup_info["baudrate"])
+        self.proxy=DynomixSerialProxy("/dev/{_port_name}".format(_port_name=_port_name),_port_name, _setup_info["baudrate"],_setup_info["minID"],_setup_info["maxID"],_setup_info["updateRate"],_setup_info["diagnosticsRate"])
         self.servos=[]
 
         #debug print
