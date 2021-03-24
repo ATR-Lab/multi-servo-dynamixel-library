@@ -80,8 +80,6 @@ class FakeMotor:
         self.speed=_speed
     def changeName(self, new_name):
         self.name=new_name
-    def classString(self):
-        return f'{self.id} {self.stateID} {self.voltage} {self.temperature} {self.angle} {self.speed}'
 
 #just starts up the translator
 """
