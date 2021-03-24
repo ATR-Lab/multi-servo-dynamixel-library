@@ -85,7 +85,7 @@ class ServoManager:
             for ids in range(0,port.servos.__len__()):
                 
                 temp_dict=port.wrapper.get_feedback(port.servos[ids])
-                temp_dict['id']=f'{portn}_{port.servos[ids]}'
+                temp_dict['id']='{portn}_{id}'.format(portn=portn,id=port.servos[ids])
                 info_dict.append(temp_dict)
 
         return info_dict
