@@ -1,7 +1,5 @@
 #Nathan Moder
 
-
-
 # Imports for Emulated Motors
 from testing.emulation_tools import SDKSerialWrapper
 from testing.emulation_tools import DynomixSerialProxy
@@ -349,7 +347,7 @@ class ServerManager:
         return motor_info
 
 
-    def running_update(self, console_input, input_length):
+    def running_update(self, console_input=1, input_length=1):
         
         # Uses the Drivers to update *only* the motors
         # which are running, and therefore changing.
@@ -357,8 +355,8 @@ class ServerManager:
             self.update_motor(rmotor)
 
         #Returns a string with all motor info
-        motor_info=[]
+        motor_info='['
         for servo_log in self.log_list:
-            motor_info.append(str(self.log_list[servo_log].print_servo()))
-        
+            motor_info+='{'+str(self.log_list[servo_log].print_servo())+'}, '
+        motor_info=motor_info[:-2]+']'
         return motor_info
