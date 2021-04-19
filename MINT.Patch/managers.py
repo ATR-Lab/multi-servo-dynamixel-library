@@ -3,7 +3,8 @@
 # Imports for Emulated Motors
 from testing.emulation_tools import SDKSerialWrapper
 from testing.emulation_tools import DynomixSerialProxy
-
+import json
+from io import StringIO
 
 # Imports for Real Motors
 #from dynomix_driver.sdk_serial_wrapper import SDKSerialWrapper
@@ -220,16 +221,17 @@ class ServoLog:
 
         #stored to a temporary value for readability
         idict=self.info_dictionary
-        if idict['moving']:
-            state = 'RUNNING'
-        
-        else:
-            state = 'IDLE'
-        
+        idict['name']=idict['id']
+        #json_dict=StringIO()
+        #json.dump(idict,json_dict)
         # Prints the info out in one line as a formatted string.
         # Every element is seperated by a space.
-        return '\"id\": {id}, \"state\": {state}, \"voltage\": {voltage}, \"temp\": {temp}, \"position\": {pos}, \"speed\": {speed}'.format(id = self.output_name, 
-        state = state, voltage = idict["voltage"], temp = idict["temperature"], 
+        #return '\'id\': \'{id}\', \"state\": {state}, \"voltage\": {voltage}, \"temp\": {temp}, \"position\": {pos}, \"speed\": {speed}'.format(id = self.output_name, 
+        #state = idict['moving'], voltage = idict["voltage"], temp = idict["temperature"], 
+        #pos = idict["position"], speed = idict["speed"])
+        #return json_dict
+        return '{id} {id} {state} {voltage} {temp} {pos} {speed}'.format(id = self.output_name, 
+        state = idict['moving'], voltage = idict["voltage"], temp = idict["temperature"], 
         pos = idict["position"], speed = idict["speed"])
 
 # Uses funcitons from RobotManager and the wrapper, but does not need to import them.
@@ -330,7 +332,7 @@ class ServerManager:
         # We loop through all the individual dictionaries, and create a servo log for each.
         # This will give us a data structure of every servo attached to the computer, and
         # prepare them to be updated only as needed.
-        motor_info=''
+        motor_info=[]
         for lmotor in all_info:
 
             # Creates the Log, giving it its name and index.
@@ -342,7 +344,8 @@ class ServerManager:
             self.log_list[lmotor['id']].log_servo(lmotor)
 
             #The Log prints all of its information.
-            motor_info=motor_info+self.log_list[lmotor['id']].print_servo()+'\n'
+            #motor_info=motor_info+self.log_list[lmotor['id']].print_servo()+'\n'
+            motor_info.append(self.log_list[lmotor['id']].print_servo())
         
         return motor_info
 
@@ -355,8 +358,10 @@ class ServerManager:
             self.update_motor(rmotor)
 
         #Returns a string with all motor info
-        motor_info='['
+        motor_info=''
         for servo_log in self.log_list:
-            motor_info+='{'+str(self.log_list[servo_log].print_servo())+'}, '
-        motor_info=motor_info[:-2]+']'
+            #motor_info+='{ '+str(self.log_list[servo_log].print_servo())+' }, '
+            motor_info+=str(self.log_list[servo_log].print_servo())+'\n'
+        #motor_info.append(self.log_list[servo_log].print_servo())
+        #motor_info=motor_info[:-2]+']'
         return motor_info
