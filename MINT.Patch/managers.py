@@ -361,7 +361,7 @@ class ServerManager:
         motor_info=''
         for servo_log in self.log_list:
             #motor_info+='{ '+str(self.log_list[servo_log].print_servo())+' }, '
-            motor_info+=str(self.log_list[servo_log].print_servo())+'\n'
+            motor_info+=str(self.log_list[servo_log].print_servo())+'/'
         #motor_info.append(self.log_list[servo_log].print_servo())
         #motor_info=motor_info[:-2]+']'
         return motor_info
