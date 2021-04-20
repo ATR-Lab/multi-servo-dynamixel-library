@@ -565,7 +565,7 @@ class SDKSerialWrapper:
     base_degree = DXL_MODEL_TO_PARAMS[model_number].get('pulse_const', .088) * raw_pos
     if base_degree < 0:
       base_degree += 360
-    return math.ceil(base_degree)
+    return math.floor(base_degree)
 
   
   def deg_to_raw_pulse(self, model_number, deg_pos, max_angle):
