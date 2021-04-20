@@ -16,7 +16,7 @@ import json, sys, os
 import zerorpc
 
 def main():
-    """
+    #"""
     # Setttings for configuring our pinging to the motors.
     settings_set = {}
 
@@ -41,14 +41,14 @@ def main():
         port = raw_port.replace('/dev/', '')
         settings_set[port] = settings
         port_list.append(port)
-    """
+    #"""
 
     #This seperate code with the emulated servos included in the directory.
     #Comment it out when using real motors
     """
     DO NOT REMOVE THIS CODE! Our team has members without constant access to real motors.
     """
-    #"""
+    """
     settings_set = {}
     port_list={'port_1','port_2'}
     settings={
@@ -60,7 +60,7 @@ def main():
     }
     settings_set['port_1']=settings
     settings_set['port_2']=settings
-    #"""
+    """
 
     # Making robot manager, and basically listening in on the GUI translator
     manager = RobotManager(port_list, settings_set)

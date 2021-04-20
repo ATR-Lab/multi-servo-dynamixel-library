@@ -15,14 +15,14 @@ pyshell2.send(JSON.stringify("scan"))
 pyshell2.send(JSON.stringify("move port_1_001 3"))
 pyshell2.send(JSON.stringify("end"))
 
-pyshell2.on('message', function(message){
+pyshell2.on('message', function(message) {
     console.log(message)
     //OOGABOOGA=OOGABOOGA+'\n'+message
 });
 
 pyshell2.end()
 
-OOGABOOGA=''
+var OOGABOOGA='hello';
 
 var http = require('http');
 http.createServer(function (req, res) {
@@ -38,8 +38,8 @@ var python_script3 = 'MINT.Patch_constant_update.py';
 var pyshell3= new PythonShell(python_script3);
 
 pyshell3.on('message', function(message){
-    //console.log(message)
-    OOGABOOGA=message;
+    console.log(message)
+    OOGABOOGA = JSON.stringify(message);
     
 });
 

@@ -1,8 +1,8 @@
 #Nathan Moder
 
 # Imports for Emulated Motors
-from testing.emulation_tools import SDKSerialWrapper
-from testing.emulation_tools import DynomixSerialProxy
+from dynomix_driver.sdk_serial_wrapper import SDKSerialWrapper
+from dynomix_driver.dynomix_serial_proxy import DynomixSerialProxy
 import json
 from io import StringIO
 
@@ -232,7 +232,7 @@ class ServoLog:
         #return json_dict
         return '{id} {id} {state} {voltage} {temp} {pos} {speed}'.format(id = self.output_name, 
         state = idict['moving'], voltage = idict["voltage"], temp = idict["temperature"], 
-        pos = idict["position"], speed = idict["speed"])
+        pos = round(idict["position"]), speed = idict["speed"])
 
 # Uses funcitons from RobotManager and the wrapper, but does not need to import them.
 class ServerManager:
