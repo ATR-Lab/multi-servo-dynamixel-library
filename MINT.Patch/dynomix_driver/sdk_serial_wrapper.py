@@ -32,15 +32,18 @@ class SDKSerialWrapper:
     self.dynotools = dynamixel_tools.DynamixelTools()
     self.raw_to_deg_switch={
       '54024' : self.raw_to_deg_pulse,
-      '311' : self.raw_to_deg_static
+      '311' : self.raw_to_deg_static,
+      '1120' : self.raw_to_deg_static
     }
     self.deg_to_raw_switch={
       '54024' : self.deg_to_raw_pulse,
-      '311' : self.deg_to_raw_static
+      '311' : self.deg_to_raw_static,
+      '1120' : self.deg_to_raw_static
     }
     self.shift_register_values = {
       'H54_200_S500_R_2' : 0,
-      'MX_64_T_2' : 0
+      'MX_64_T_2' : 0,
+      'XM540_w270_R_2' : 0
     }
 
   def debugOutput(self, servo_id, register, value):
