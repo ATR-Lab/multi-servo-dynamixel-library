@@ -33,6 +33,7 @@ def listen():
         'move': listener.move_motor,
         'scan': listener.scan,
         'update': listener.running_update,
+        'move_all': listener.move_motor_sync,
         'end' : end_listening
     }
 

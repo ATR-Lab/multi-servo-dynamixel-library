@@ -2,6 +2,7 @@
 from .dyn_const import *
 import dynamixel_sdk.port_handler as port_h
 import dynamixel_sdk.packet_handler as packet_h
+import dynamixel_sdk.group_sync_write as gsw
 from dynamixel_sdk import *
 from dynomix_tools import dynamixel_tools
 
@@ -131,7 +132,7 @@ class SDKSerialWrapper:
 
 
   # TODO: Look into this function and figure out how it is used.
-  def sync_write(self, address, data):
+  def sync_write(self, servo_ids, address, data, size):
     """ Use Broadcast message to send multiple servos instructions at the
     same time. No "status packet" will be returned from any servos.
     "address" is an integer between 0 and 49. It is recommended to use the
@@ -141,13 +142,21 @@ class SDKSerialWrapper:
     data can be as long as needed.
     To set servo with id 1 to position 276 and servo with id 2 to position
     550, the method should be called like:
-        sync_write(DXL_GOAL_POSITION_L, ( (1, 20, 1), (2 ,38, 2) ))
+        sync_write(DXL_GOAL_POSITION_L, ( (1, 20, 1), (2 ,38, 2) ))"""
     
-    groupSyncWrite = GroupSyncWrite(portHandler, packetHandler, ADDR_PRO_GOAL_POSITION, LEN_PRO_GOAL_POSITION)
+    # groupSyncWrite = GroupSyncWrite(portHandler, packetHandler, ADDR_PRO_GOAL_POSITION, LEN_PRO_GOAL_POSITION)
+    
 
     with self.serial_mutex:
-      self.__write_serial(packetStr)
-    """
+      GSW = gsw.GroupSyncWrite(self.port_handler, self.packet_handler, address, size * len(servo_ids))
+      
+      for dxl_id in servo_ids:
+        GSW.addParam(dxl_id, data)
+
+      GSW.txPacket()
+
+      GSW.clearParam()
+    
 
   def ping(self, servo_id):
     """ Ping the servo with "servo_id". This causes the servo to return a
@@ -211,6 +220,32 @@ class SDKSerialWrapper:
     response = self.write(servo_id, register_goal_position, register_goal_position_length, int(raw_pos))
 
     return response
+
+  def set_torque_enabled_sync(self, servo_ids, enabled, motor_info):
+    model_number = motor_info[str(servo_ids[0])]['model_number']
+    model_name = self.dynotools.getModelNameByModelNumber(model_number)
+
+    register_torque_enabled = self.dynotools.getRegisterAddressByModel(model_name, "torque_enable")
+    register_torque_enabled_length = self.dynotools.getAddressSizeByModel(model_name, "torque_enable")
+
+    response = self.sync_write(servo_ids, register_torque_enabled, enabled, register_torque_enabled_length)
+    
+    return response
+
+  def set_goal_position_sync(self, servo_ids, goal_position, motor_info):
+    model_number = motor_info[str(servo_ids[0])]['model_number']
+    model_name = self.dynotools.getModelNameByModelNumber(model_number)
+
+    register_goal_position = self.dynotools.getRegisterAddressByModel(model_name, "goal_position")
+    register_goal_position_length = self.dynotools.getAddressSizeByModel(model_name, "goal_position")
+
+    raw_pos = self.deg_to_raw_switch[str(model_number)](model_number, goal_position, motor_info[str(servo_ids[0])]['max_angle'])
+
+    response = self.sync_write(servo_ids, register_goal_position, [int(raw_pos)], register_goal_position_length)
+
+    return response
+
+    
 
 
   #################################
