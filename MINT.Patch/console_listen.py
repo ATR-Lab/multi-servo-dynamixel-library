@@ -34,6 +34,7 @@ def listen():
         'scan': listener.scan,
         'update': listener.running_update,
         'move_all': listener.move_motor_sync,
+        'move_diff': listener.move_motor_different,
         'end' : end_listening
     }
 

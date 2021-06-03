@@ -307,13 +307,42 @@ class ServerManager:
                 all_included = True
         
         if all_included:
-            print("MOVING MOTORS")
-            self.manager.ports_by_name[servo_names_name[0]].proxy.set_torque_enabled_sync(servo_names_id, [1])
-            self.manager.ports_by_name[servo_names_name[0]].proxy.set_goal_position_sync(servo_names_id, int(console_input[len(console_input)-1]))
-            for servo_name in servo_names:
-                self.running_motors.append(servo_name)
-        
+            for s_id in servo_names_id:
+                self.manager.ports_by_name[servo_names_name[0]].proxy.set_torque_enabled(s_id, [1])
+                self.manager.ports_by_name[servo_names_name[0]].proxy.set_goal_position(s_id, int(console_input[len(console_input)-1]))
+            self.running_motors.append(servo_names_name[0])
+
         return True
+
+    def move_motor_different(self, console_input, input_length):
+        if input_length < 3:
+            return True
+        
+        servo_names = []
+        for servo_name in range(1, len(console_input), 2):
+            servo_names.append(console_input[servo_name])
+        
+        servo_positions = console_input[2::2]
+
+        servo_names_id = [int(servo_name[-3:]) for servo_name in servo_names]
+
+        servo_names_name = [servo_name[:-4] for servo_name in servo_names]
+
+        all_included = False
+
+        for s_id in range(0, len(servo_names_id)):
+            if self.manager.check_included(servo_names_name[s_id], servo_names_id[s_id]):
+                all_included = True 
+
+        if all_included:
+            for s_id in range(0, len(servo_names_id)):
+                self.manager.ports_by_name[servo_names_name[s_id]].proxy.set_torque_enabled(servo_names_id[s_id], [1])
+                self.manager.ports_by_name[servo_names_name[s_id]].proxy.set_goal_position(servo_names_id[s_id], int(servo_positions[s_id]))
+            self.running_motors.append(servo_names_name[s_id])
+
+        return True
+
+
 
 
 
