@@ -57,8 +57,8 @@ struct DataType< ::dynamixel_manipulation::StopController > {
 };
 
 
-// service_traits::MD5Sum< ::dynamixel_manipulation::StopControllerRequest> should match 
-// service_traits::MD5Sum< ::dynamixel_manipulation::StopController > 
+// service_traits::MD5Sum< ::dynamixel_manipulation::StopControllerRequest> should match
+// service_traits::MD5Sum< ::dynamixel_manipulation::StopController >
 template<>
 struct MD5Sum< ::dynamixel_manipulation::StopControllerRequest>
 {
@@ -72,8 +72,8 @@ struct MD5Sum< ::dynamixel_manipulation::StopControllerRequest>
   }
 };
 
-// service_traits::DataType< ::dynamixel_manipulation::StopControllerRequest> should match 
-// service_traits::DataType< ::dynamixel_manipulation::StopController > 
+// service_traits::DataType< ::dynamixel_manipulation::StopControllerRequest> should match
+// service_traits::DataType< ::dynamixel_manipulation::StopController >
 template<>
 struct DataType< ::dynamixel_manipulation::StopControllerRequest>
 {
@@ -87,8 +87,8 @@ struct DataType< ::dynamixel_manipulation::StopControllerRequest>
   }
 };
 
-// service_traits::MD5Sum< ::dynamixel_manipulation::StopControllerResponse> should match 
-// service_traits::MD5Sum< ::dynamixel_manipulation::StopController > 
+// service_traits::MD5Sum< ::dynamixel_manipulation::StopControllerResponse> should match
+// service_traits::MD5Sum< ::dynamixel_manipulation::StopController >
 template<>
 struct MD5Sum< ::dynamixel_manipulation::StopControllerResponse>
 {
@@ -102,8 +102,8 @@ struct MD5Sum< ::dynamixel_manipulation::StopControllerResponse>
   }
 };
 
-// service_traits::DataType< ::dynamixel_manipulation::StopControllerResponse> should match 
-// service_traits::DataType< ::dynamixel_manipulation::StopController > 
+// service_traits::DataType< ::dynamixel_manipulation::StopControllerResponse> should match
+// service_traits::DataType< ::dynamixel_manipulation::StopController >
 template<>
 struct DataType< ::dynamixel_manipulation::StopControllerResponse>
 {

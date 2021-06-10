@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#! /usr/bin/python3
 
 from threading import Thread
 
@@ -16,7 +16,7 @@ import dynamixel_sdk.port_handler as port_h
 import dynamixel_sdk.packet_handler as packet_h
 from pprint import pprint
 
-from dynomix_driver.dynamixel_const import *
+from dynomix_driver.dyn_const import *
 
 from dynamixel_sdk.robotis_def import * # Uses Dynamixel SDK library
 import dynamixel_sdk.group_sync_write as gsw

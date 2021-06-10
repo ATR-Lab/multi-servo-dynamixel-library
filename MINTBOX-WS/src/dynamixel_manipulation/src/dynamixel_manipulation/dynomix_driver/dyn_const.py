@@ -245,10 +245,10 @@ MX_106_T_2_NUMBER               = 321
 # Control Table Constants
 MX_106_T_2_MODEL                = 0
 MX_106_T_2_ID                   = 7
-MX_106_T_2_DRIVE_MODE           = 10      # Operating Mode
-MX_106_T_2_LIMIT_TEMPERATURE    = 31
-MX_106_T_2_LIMIT_VOLTAGE_H    = 32
-MX_106_T_2_LIMIT_VOLTAGE_L    = 34
+MX_106_T_2_DRIVE_MODE           = 0      # Operating Mode
+MX_106_T_2_LIMIT_TEMPERATURE    = 72
+MX_106_T_2_LIMIT_VOLTAGE_H    = 140
+MX_106_T_2_LIMIT_VOLTAGE_L    = 60
 MX_106_T_2_LIMIT_ACCELERATION   = 40    
 MX_106_T_2_LIMIT_TORQUE         = None     
 MX_106_T_2_LIMIT_VELOCITY       = 44   
@@ -281,7 +281,47 @@ MX_106_T_2_PRESENT_TEMPERATURE_LENGTH  = 1
 MX_106_T_2_PRESENT_VOLTAGE_LENGTH      = 2
 
 
+###########################################
+# XL430_w250_T_2
+###########################################
+XL430_w250_T_2_NUMBER               = 1060
+# Control Table Constants
+XL430_w250_T_2_MODEL                = 0
+XL430_w250_T_2_ID                   = 7
+XL430_w250_T_2_DRIVE_MODE           = 10      # Operating Mode
+XL430_w250_T_2_LIMIT_TEMPERATURE    = 31
+XL430_w250_T_2_LIMIT_VOLTAGE_H    = 32
+XL430_w250_T_2_LIMIT_VOLTAGE_L    = 34
+XL430_w250_T_2_LIMIT_ACCELERATION   = 40    
+XL430_w250_T_2_LIMIT_TORQUE         = None     
+XL430_w250_T_2_LIMIT_VELOCITY       = 44   
+XL430_w250_T_2_ANGLE_LIMIT_L        = 52
+XL430_w250_T_2_ANGLE_LIMIT_H        = 48
+XL430_w250_T_2_GOAL_POSITION        = 116
+XL430_w250_T_2_GOAL_VELOCITY        = 104
+XL430_w250_T_2_PRESENT_POSITION     = 132
+XL430_w250_T_2_PRESENT_VELOCITY     = 128
+XL430_w250_T_2_PRESENT_CURRENT      = 126
+XL430_w250_T_2_PRESENT_VOLTAGE      = 144
+XL430_w250_T_2_PRESENT_TEMPERATURE  = 146
 
+XL430_w250_T_2_MODEL_LENGTH                = 2
+XL430_w250_T_2_DRIVE_MODE_LENGTH           = 1    # Operating Mode
+XL430_w250_T_2_LIMIT_TEMPERATURE_LENGTH    = 1
+XL430_w250_T_2_LIMIT_VOLTAGE_H_LENGTH    = 2
+XL430_w250_T_2_LIMIT_VOLTAGE_L_LENGTH    = 2
+XL430_w250_T_2_LIMIT_ACCELERATION_LENGTH   = 4    # NOTE: http://emanual.robotis.com/docs/en/dxl/x/xm540-w270/#profile-acceleration
+XL430_w250_T_2_LIMIT_TORQUE_LENGTH         = None
+XL430_w250_T_2_LIMIT_VELOCITY_LENGTH       = 4
+XL430_w250_T_2ANGLE_LIMIT_L_LENGTH        = 4
+XL430_w250_T_2_ANGLE_LIMIT_H_LENGTH        = 4
+XL430_w250_T_2_GOAL_POSITION_LENGTH        = 4
+XL430_w250_T_2_GOAL_VELOCITY_LENGTH        = 4
+XL430_w250_T_2_PRESENT_POSITION_LENGTH     = 4
+XL430_w250_T_2_PRESENT_VELOCITY_LENGTH     = 4
+XL430_w250_T_2_PRESENT_CURRENT_LENGTH      = 2
+XL430_w250_T_2_PRESENT_TEMPERATURE_LENGTH  = 1
+XL430_w250_T_2_PRESENT_VOLTAGE_LENGTH      = 2
 
 # maximum holding torque is in N-m per volt
 # maximum velocity is in rad/sec per volt
@@ -304,7 +344,8 @@ DXL_MODEL_TO_PARAMS = \
     'torque_per_volt': 44.7 / 12.0,  # TODO: Needs to be completed, values not found in specs sheets (voltages might be different)
     'velocity_per_volt': (29.0 * RPM_TO_RADSEC) / 12.0, # TODO: Needs to be completed, values not found in specs sheets (voltages might be different)
     'rpm_per_tick': 0.00199234,
-    'features': []
+    'pulse_const': 180.0 / 250961.5,
+    'features': [DXL_CURRENT_L]
   },
   311: {
     "name": "MX_64_T_2",
@@ -321,8 +362,21 @@ DXL_MODEL_TO_PARAMS = \
     'range_degree': 360,
     'torque_per_volt': 10.6 / 12.0,
     'velocity_per_volt': (30 * RPM_TO_RADSEC) / 12.0,
-    'features': []
+    'rpm_per_tick':       0.114,
+    'features': [DXL_CURRENT_L]
   },
+  1020: {
+    'name': 'XM430_w350_T_2',
+    'encoder_resolution': 4096,
+    'range_degree': 360,
+    'torque_per_volt': 10.6 / 12.0,
+    'velocity_per_volt': (30 * RPM_TO_RADSEC) / 12.0,
+    'rpm_per_tick':       0.114,
+    'features': [DXL_CURRENT_L]
+  },
+
+
+# TODO: Implement rest of motor containers
   1060: { 
     'name': 'XL430_w250_T_2',
     'encoder_resolution': 4096,
@@ -331,13 +385,6 @@ DXL_MODEL_TO_PARAMS = \
     'velocity_per_volt': (57 * RPM_TO_RADSEC) / 12.0,  # 57 [rev/min] (at 11.1 [V])
     'features': []
   },
-
-
-
-
-
-
-
   113: { 
     'name':               'DX-113',
     'encoder_resolution': 1024,
@@ -356,20 +403,12 @@ DXL_MODEL_TO_PARAMS = \
     'rpm_per_tick':       0.111,
     'features':           []
   },
-  117: { 'name':               'DX-117',
+  117: { 
+    'name':               'DX-117',
     'encoder_resolution': 1024,
     'range_degrees':      300.0,
     'torque_per_volt':    3.7 / 18.5,                       #  3.7 NM @ 18.5V
     'velocity_per_volt':  (85 * RPM_TO_RADSEC) / 18.5,      #  85 RPM @ 18.5V
-    'rpm_per_tick':       0.111,
-    'features':           []
-  },
-  12: { 
-    'name':               'AX-12',
-    'encoder_resolution': 1024,
-    'range_degrees':      300.0,
-    'torque_per_volt':    1.5 / 12.0,                       #  1.5 NM @ 12V
-    'velocity_per_volt':  (59 * RPM_TO_RADSEC) / 12.0,      #  59 RPM @ 12V
     'rpm_per_tick':       0.111,
     'features':           []
   },

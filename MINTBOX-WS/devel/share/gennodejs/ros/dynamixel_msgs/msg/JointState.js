@@ -149,7 +149,7 @@ class JointState {
   static getMessageSize(object) {
     let length = 0;
     length += std_msgs.msg.Header.getMessageSize(object.header);
-    length += object.name.length;
+    length += _getByteLength(object.name);
     length += 4 * object.motor_ids.length;
     length += 4 * object.motor_temps.length;
     return length + 53;
@@ -195,8 +195,6 @@ class JointState {
     # time-handling sugar is provided by the client library
     time stamp
     #Frame this data is associated with
-    # 0: no frame
-    # 1: global frame
     string frame_id
     
     `;

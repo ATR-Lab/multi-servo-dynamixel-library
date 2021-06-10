@@ -1,19 +1,22 @@
-#!/usr/bin/env python
+#! /usr/bin/python3
 
 from threading import Thread, Lock
 import sys
 import rospy
+from yaml import *
+from importlib import reload
 
 from dynamixel_manipulation.srv import StartController
 from dynamixel_manipulation.srv import StartControllerResponse 
 from dynamixel_manipulation.srv import StopController
 from dynamixel_manipulation.srv import StopControllerResponse 
 from dynamixel_manipulation.srv import RestartController
-from dynamixel_manipulation.srv import RestartControllerResponse 
+from dynamixel_manipulation.srv import RestartControllerResponse
 
 from joint_position_controller import JointPositionController
 from joint_trajectory_action_controller import JointTrajectoryActionController
 from dynomix_driver.dynomix_serial_proxy import DynomixSerialProxy
+from dynomix_joint_controller import DynamixelJointController
 
 class DynomixControllerManager:
   """
@@ -162,28 +165,36 @@ class DynomixControllerManager:
       self.start_controller_lock.release()
       return StartControllerResponse(False, 'Controller [%s] already started. If you want to restart it, call restart.' % controller_name)
 
+    # Try / Fetch method to fetch controller module information
+    # Marcus - Need to continue figuring out why this module doesn't function
+    # in regards to a module fetch error
+    # [ERROR] [1623087202.587610]: Unknown error has occured. Unable to start controller dynomix_joint_controller
+    # module 'dynamixel_manipulation' has no attribute 'dynomix_joint_controller'
     try:
       if module_name not in sys.modules:
         # import if module not previously imported
         package_module = __import__(package_path, globals(), locals(), [module_name], -1)
       else:
         # reload module if previously imported'
-        # print(sys.modules)
-        print("::: package_path::: " + package_path + " ::: module_name::: " + module_name)
+        rospy.loginfo("::: package_path::: " + package_path + " ::: module_name::: " + module_name)
         # package_module = reload(sys.modules[package_path]) # IRVIN DELETING
         #TODO: Fix this below
-        # controller_module = getattr(package_module, module_name)
-      controller_module = reload(sys.modules[module_name])
-    except ImportError, ie:
+        package_module = reload(sys.modules[package_path])
+        # rospy.loginfo("::: package_module#start_controller ::: %s  ::: class_name#start_controller ::: %s" % (package_module, class_name))
+      controller_module = __import__(module_name)
+      # rospy.loginfo("::: controller_module %s :::" % new_controller_module)
+      # controller_module = getattr(package_module, module_name)
+    except ImportError as ie:
       self.start_controller_lock.release()
       return StartControllerResponse(False, 'Cannot find controller module. Unable to start controller %s\n%s' % (module_name, str(ie)))
-    except SyntaxError, se:
+    except SyntaxError as se:
       self.start_controller_lock.release()
       return StartControllerResponse(False, 'Syntax error in controller module. Unable to start controller %s\n%s' % (module_name, str(se)))
-    except Exception, e:
+    except Exception as e:
         self.start_controller_lock.release()
         return StartControllerResponse(False, 'Unknown error has occured. Unable to start controller %s\n%s' % (module_name, str(e)))
     
+    # KLS is an object variable for the joint controller
     kls = getattr(controller_module, class_name)
 
     # kls = None

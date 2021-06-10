@@ -51,7 +51,7 @@ class StopControllerRequest {
 
   static getMessageSize(object) {
     let length = 0;
-    length += object.controller_name.length;
+    length += _getByteLength(object.controller_name);
     return length + 4;
   }
 
@@ -135,7 +135,7 @@ class StopControllerResponse {
 
   static getMessageSize(object) {
     let length = 0;
-    length += object.reason.length;
+    length += _getByteLength(object.reason);
     return length + 5;
   }
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#! /usr/bin/python3
 
 __author__ = "Irvin Steve Cardenas"
 __email__ = "irvin@irvincardenas.com"
@@ -46,22 +46,22 @@ def manage_controller(controller_name, port_namespace, controller_type, command,
         response = start(port_namespace, package_path, module_name, class_name, controller_name, deps)
         if response.success: rospy.loginfo(response.reason)
         else: rospy.logerr(response.reason)
-    except rospy.ServiceException, e:
-        rospy.logerr('Service call failed: %s' % e)
+    except rospy.ServiceException:
+        rospy.logerr('Service call failed: ')
   elif command.lower() == 'stop':
     try:
         response = stop(controller_name)
         if response.success: rospy.loginfo(response.reason)
         else: rospy.logerr(response.reason)
-    except rospy.ServiceException, e:
-        rospy.logerr('Service call failed: %s' % e)
+    except rospy.ServiceException:
+        rospy.logerr('Service call failed: ')
   elif command.lower() == 'restart':
     try:
         response = restart(port_namespace, package_path, module_name, class_name, controller_name, deps)
         if response.success: rospy.loginfo(response.reason)
         else: rospy.logerr(response.reason)
-    except rospy.ServiceException, e:
-        rospy.logerr('Service call failed: %s' % e)
+    except rospy.ServiceException:
+        rospy.logerr('Service call failed: ')
   else:
       rospy.logerr('Invalid command.')
   parser.print_help()

@@ -70,8 +70,8 @@
    (setq _reason (string __reason))
    self)
   (:success
-   (&optional __success)
-   (if __success (setq _success __success)) _success)
+   (&optional (__success :null))
+   (if (not (eq __success :null)) (setq _success __success)) _success)
   (:reason
    (&optional __reason)
    (if __reason (setq _reason __reason)) _reason)

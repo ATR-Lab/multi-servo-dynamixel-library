@@ -365,6 +365,15 @@ DXL_MODEL_TO_PARAMS = \
     'rpm_per_tick':       0.114,
     'features': [DXL_CURRENT_L]
   },
+  1020: {
+    'name': 'XM430_w350_T_2',
+    'encoder_resolution': 4096,
+    'range_degree': 360,
+    'torque_per_volt': 10.6 / 12.0,
+    'velocity_per_volt': (30 * RPM_TO_RADSEC) / 12.0,
+    'rpm_per_tick':       0.114,
+    'features': [DXL_CURRENT_L]
+  },
 
 
 # TODO: Implement rest of motor containers

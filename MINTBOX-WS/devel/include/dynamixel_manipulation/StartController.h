@@ -57,8 +57,8 @@ struct DataType< ::dynamixel_manipulation::StartController > {
 };
 
 
-// service_traits::MD5Sum< ::dynamixel_manipulation::StartControllerRequest> should match 
-// service_traits::MD5Sum< ::dynamixel_manipulation::StartController > 
+// service_traits::MD5Sum< ::dynamixel_manipulation::StartControllerRequest> should match
+// service_traits::MD5Sum< ::dynamixel_manipulation::StartController >
 template<>
 struct MD5Sum< ::dynamixel_manipulation::StartControllerRequest>
 {
@@ -72,8 +72,8 @@ struct MD5Sum< ::dynamixel_manipulation::StartControllerRequest>
   }
 };
 
-// service_traits::DataType< ::dynamixel_manipulation::StartControllerRequest> should match 
-// service_traits::DataType< ::dynamixel_manipulation::StartController > 
+// service_traits::DataType< ::dynamixel_manipulation::StartControllerRequest> should match
+// service_traits::DataType< ::dynamixel_manipulation::StartController >
 template<>
 struct DataType< ::dynamixel_manipulation::StartControllerRequest>
 {
@@ -87,8 +87,8 @@ struct DataType< ::dynamixel_manipulation::StartControllerRequest>
   }
 };
 
-// service_traits::MD5Sum< ::dynamixel_manipulation::StartControllerResponse> should match 
-// service_traits::MD5Sum< ::dynamixel_manipulation::StartController > 
+// service_traits::MD5Sum< ::dynamixel_manipulation::StartControllerResponse> should match
+// service_traits::MD5Sum< ::dynamixel_manipulation::StartController >
 template<>
 struct MD5Sum< ::dynamixel_manipulation::StartControllerResponse>
 {
@@ -102,8 +102,8 @@ struct MD5Sum< ::dynamixel_manipulation::StartControllerResponse>
   }
 };
 
-// service_traits::DataType< ::dynamixel_manipulation::StartControllerResponse> should match 
-// service_traits::DataType< ::dynamixel_manipulation::StartController > 
+// service_traits::DataType< ::dynamixel_manipulation::StartControllerResponse> should match
+// service_traits::DataType< ::dynamixel_manipulation::StartController >
 template<>
 struct DataType< ::dynamixel_manipulation::StartControllerResponse>
 {

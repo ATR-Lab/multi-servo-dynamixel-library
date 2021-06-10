@@ -288,6 +288,40 @@ class ServerManager:
             self.running_motors.append(servo_name)
         return True
 
+    def move_motor_continuous(self, console_input, input_length):
+        if input_length < 3:
+            return True
+
+        #extract the needed name from the input
+        servo_name=console_input[1]
+        
+        #These values hold the same role as in stop_motor.
+        pname = servo_name[:-4]
+        sid = int(servo_name[-3:])
+        position = int(console_input[2])
+        
+        # Trying to move a motor not attached to the system would be 
+        # just as bad as stopping one.
+        if self.manager.check_included(pname,sid):
+
+            # Enable torque for motor to have it set goal position.
+            self.manager.ports_by_name[pname].proxy.set_torque_enabled(sid, [1])
+
+            idict = self.manager.ports_by_name[pname].proxy.get_feedback(sid)
+            current_pos = idict["position"]
+
+            # Set goal position of the motor
+            # self.manager.ports_by_name[pname].proxy.set_goal_position(sid,(int(console_input[2])))
+            # self.manager.ports_by_name[pname].proxy.set_goal_position(sid,int(console_input[2]*(1000/88)))
+            for pos_index in range(current_pos, position):
+                self.manager.ports_by_name[pname].proxy.set_goal_position(sid, pos_index)
+
+            # We add the motor to a list of currently running motors.
+            self.running_motors.append(servo_name)
+        return True
+        
+
+
     def move_motor_sync(self, console_input, input_length):
         if input_length < 3:
             return True
@@ -310,7 +344,7 @@ class ServerManager:
             for s_id in servo_names_id:
                 self.manager.ports_by_name[servo_names_name[0]].proxy.set_torque_enabled(s_id, [1])
                 self.manager.ports_by_name[servo_names_name[0]].proxy.set_goal_position(s_id, int(console_input[len(console_input)-1]))
-            self.running_motors.append(servo_names_name[0])
+            self.running_motors.append(servo_names[s_id])
 
         return True
 
@@ -338,14 +372,9 @@ class ServerManager:
             for s_id in range(0, len(servo_names_id)):
                 self.manager.ports_by_name[servo_names_name[s_id]].proxy.set_torque_enabled(servo_names_id[s_id], [1])
                 self.manager.ports_by_name[servo_names_name[s_id]].proxy.set_goal_position(servo_names_id[s_id], int(servo_positions[s_id]))
-            self.running_motors.append(servo_names_name[s_id])
+                self.running_motors.append(servo_names[s_id])
 
         return True
-
-
-
-
-
 
     def update_motor(self, servo_name):
         """

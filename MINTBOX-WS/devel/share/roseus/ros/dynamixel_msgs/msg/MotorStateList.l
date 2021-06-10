@@ -19,7 +19,7 @@
 (defmethod dynamixel_msgs::MotorStateList
   (:init
    (&key
-    ((:motor_states __motor_states) (let (r) (dotimes (i 0) (push (instance dynamixel_msgs::MotorState :init) r)) r))
+    ((:motor_states __motor_states) ())
     )
    (send-super :init)
    (setq _motor_states __motor_states)

@@ -1,2 +1,2 @@
 - setup-file:
-    local-name: /home/marcodotio/mint-ws/multi-servo-dynamixel-library/MINTBOX-WS/devel/setup.sh
+    local-name: /home/marcodotio/mintbox/multi-servo-dynamixel-library/MINTBOX-WS/devel/setup.sh

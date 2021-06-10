@@ -70,8 +70,8 @@
    (&optional __temperature)
    (if __temperature (setq _temperature __temperature)) _temperature)
   (:moving
-   (&optional __moving)
-   (if __moving (setq _moving __moving)) _moving)
+   (&optional (__moving :null))
+   (if (not (eq __moving :null)) (setq _moving __moving)) _moving)
   (:serialization-length
    ()
    (+

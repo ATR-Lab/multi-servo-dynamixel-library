@@ -16,6 +16,9 @@ MODEL_NUMBER_2_MOTOR_NAME = {
   },
   1060: {
     "name": "XL430_w250_T_2"
+  },
+  1020: {
+    "name": "XM430_w350_T_2"
   }
 }
 
@@ -156,6 +159,64 @@ MOTOR_CONTROL_TABLE = {
     }
   },
   "XM540_w270_R_2": {
+    "present_position": {
+      "address": 132,
+      "size": 4
+    },
+    "angle_limit_max": {
+      "address": 48,
+      "size": 4
+    },
+    "angle_limit_min": {
+      "address": 52,
+      "size": 4
+    },
+    "goal_position": {
+      "address": 116,
+      "size": 4
+    },
+    "torque_enable": {
+      "address": 64,
+      "size": 1
+    },
+    "torque_Limit": {
+      "address": None,
+      "size": None
+    },
+    "profile_velocity": {
+      "address": 112,
+      "size": 4
+    },
+    "present_velocity": {
+      "address": 128,
+      "size": 4
+    },
+    "present_temperature": {
+      "address": 146,
+      "size": 2
+    },
+    "present_current": {
+      "address": 126,
+      "size": 2
+    },
+    "moving": {
+      "address": 122,
+      "size": 2
+    },
+    "present_voltage": {
+      "address": 144,
+      "size": 2
+    },
+    "min_voltage": {
+      "address": 34,
+      "size": 2
+    },
+    "max_voltage": {
+      "address": 32,
+      "size": 2
+    }
+  },
+  "XM430_w350_T_2": {
     "present_position": {
       "address": 132,
       "size": 4

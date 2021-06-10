@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 
 class DynamixelManipulator:
   """Generic class representing a Dynamixel manipulator"""

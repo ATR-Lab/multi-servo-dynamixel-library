@@ -35,9 +35,9 @@ def listen():
         'update': listener.running_update,
         'move_all': listener.move_motor_sync,
         'move_diff': listener.move_motor_different,
+        'move_cont': listener.move_motor_continuous,
         'end' : end_listening
     }
-
 
     # LOOP SETUP
     Continue=True

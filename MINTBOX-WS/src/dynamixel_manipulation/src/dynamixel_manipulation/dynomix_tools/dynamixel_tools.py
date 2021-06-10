@@ -24,17 +24,6 @@ class DynamixelTools:
       return (float(position_val) - model_info.val_zero_radian_position) * model_info.min_radian / (float(model_info.val_min_radian_position) - model_info.val_zero_radian_position)
 
 
-  def convertPosition2Radian(self, position_val, min_position, max_position, min_radian, max_radian):
-    """
-    Converts a position value of a given actuator to its radian representation
-    """
-    zero_position = (max_position + min_position) / 2
-
-    if position_val > zero_position:
-      return ((float(position_val) - zero_position) * max_radian / (float(max_position) - zero_position))
-    elif position_val < zero_position:
-      return ((float(position_val) - zero_position) * min_radian / (float(min_position) - zero_position))
-
   def convertRadian2Position(self, radian_val, min_position, max_position, min_radian, max_radian):
     """
     Converts a radian value to a position representation given the desired min and max position and radian values
@@ -48,16 +37,25 @@ class DynamixelTools:
     else: 
       return zero_position
 
+  def convertRawPosition2Degree(self, raw_position):
+    return raw_position * 0.088
+
+  def raw_to_rad(self, raw, initial_position_raw, flipped, radians_per_encoder_tick):
+    return (initial_position_raw - raw if flipped else raw - initial_position_raw) * radians_per_encoder_tick
+
   ########################################################################
   #
   ########################################################################
-  def getAddressSizeByModel(servo_model, register_name):
-    return MOTOR_CONTROL_TABLE[str(servo_model)][register_name]['size']
+  def getAddressSizeByModel(self, servo_model, register_name):
+    return MOTOR_CONTROL_TABLE[servo_model][register_name]['size']
 
-  def getRegisterAddressByModel(servo_model, register_name):
-    return  MOTOR_CONTROL_TABLE[str(servo_model)][register_name]['address']
+  def getRegisterAddressByModel(self, servo_model, register_name):
+    return  MOTOR_CONTROL_TABLE[servo_model][register_name]['address']
 
-  def getSumaryAddressSizeByModel(servo_model):
+  def getModelNameByModelNumber(self, servo_model):
+    return MODEL_NUMBER_2_MOTOR_NAME[servo_model]['name']
+
+  def getSumaryAddressSizeByModel(self, servo_model):
     """
     The n bits of the registers that allows for a single read
     {'timestamp': timestamp,
@@ -71,4 +69,8 @@ class DynamixelTools:
     'temperature': temperature,
     'moving': bool(moving) }
     """
-    return  MOTOR_CONTROL_TABLE[str(servo_model)][register_name]['summary_size']
+    return  MOTOR_CONTROL_TABLE[servo_model]['summary_size']
+
+  def test_bit(self, number, offset):
+    mask = 1 << offset
+    return (number & mask)

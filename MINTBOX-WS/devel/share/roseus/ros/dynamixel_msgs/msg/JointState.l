@@ -76,8 +76,8 @@
    (&optional __load)
    (if __load (setq _load __load)) _load)
   (:is_moving
-   (&optional __is_moving)
-   (if __is_moving (setq _is_moving __is_moving)) _is_moving)
+   (&optional (__is_moving :null))
+   (if (not (eq __is_moving :null)) (setq _is_moving __is_moving)) _is_moving)
   (:serialization-length
    ()
    (+

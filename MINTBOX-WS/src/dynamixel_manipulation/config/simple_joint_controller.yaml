@@ -1,0 +1,25 @@
+l_shoulder_pitch_controller:
+  controller:
+    package: dynamixel_manipulation
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: l_shoulder_pitch_joint
+  joint_speed: 0.1
+  motor:
+    id: 1
+    init: 2000
+    min: 0
+    max: 4065
+
+l_shoulder_pan_controller:
+  controller:
+    package: dynamixel_manipulation
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: l_shoulder_pan_joint
+  joint_speed: 0.1
+  motor:
+    id: 2
+    init: 2000
+    min: 0
+    max: 4065

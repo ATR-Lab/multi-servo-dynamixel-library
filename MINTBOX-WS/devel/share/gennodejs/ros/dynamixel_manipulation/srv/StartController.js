@@ -106,13 +106,13 @@ class StartControllerRequest {
 
   static getMessageSize(object) {
     let length = 0;
-    length += object.port_name.length;
-    length += object.package_path.length;
-    length += object.module_name.length;
-    length += object.class_name.length;
-    length += object.controller_name.length;
+    length += _getByteLength(object.port_name);
+    length += _getByteLength(object.package_path);
+    length += _getByteLength(object.module_name);
+    length += _getByteLength(object.class_name);
+    length += _getByteLength(object.controller_name);
     object.dependencies.forEach((val) => {
-      length += 4 + val.length;
+      length += 4 + _getByteLength(val);
     });
     return length + 24;
   }
@@ -130,12 +130,12 @@ class StartControllerRequest {
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    string port_name
-    string package_path
-    string module_name
-    string class_name
-    string controller_name
-    string[] dependencies
+    string port_name            # serial port that this controller is connected to
+    string package_path         # path to ROS package containing controller module
+    string module_name          # name of the controller module within that package
+    string class_name           # controller class name within that module
+    string controller_name      # path to controller config parameters on param server
+    string[] dependencies       # optional, list names of all controllers this controller depends on
     
     `;
   }
@@ -237,7 +237,7 @@ class StartControllerResponse {
 
   static getMessageSize(object) {
     let length = 0;
-    length += object.reason.length;
+    length += _getByteLength(object.reason);
     return length + 5;
   }
 
