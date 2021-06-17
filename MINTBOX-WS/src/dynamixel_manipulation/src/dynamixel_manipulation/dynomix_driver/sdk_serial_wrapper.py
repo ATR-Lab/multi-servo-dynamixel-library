@@ -82,7 +82,7 @@ class SDKSerialWrapper:
 
       # wait for response packet from the motor
       timestamp = time.time()
-      time.sleep(0.00235) #0.00235 is a debug time value
+      # time.sleep(0.00235) #0.00235 is a debug time value
 
     return result
 
@@ -121,7 +121,7 @@ class SDKSerialWrapper:
 
       # wait for response packet from the motor
       timestamp = time.time()
-      time.sleep(0.00235)
+      # time.sleep(0.00235)
 
     return result
 
@@ -136,7 +136,7 @@ class SDKSerialWrapper:
 
       # wait for response packet from the motor
       timestamp = time.time()
-      time.sleep(0.0013)
+      # time.sleep(0.0013)
     
     return result
 
@@ -184,6 +184,21 @@ class SDKSerialWrapper:
     raw_pos = self.deg_to_raw_switch[str(model_number)](model_number, goal_position, motor_info[str(servo_id)]['max_angle'])
 
     response = self.write(servo_id, register_goal_position, register_goal_position_length, int(raw_pos))
+
+    return response
+
+  def set_speed(self, servo_id, speed, motor_info):
+    model_number = motor_info[str(servo_id)]['model_number']
+    model_name = self.dynotools.getModelNameByModelNumber(model_number)
+
+    register_speed = self.dynotools.getRegisterAddressByModel(model_name, 
+                                                                      "profile_velocity")
+    register_speed_length = self.dynotools.getAddressSizeByModel(model_name, 
+                                                                        "profile_velocity")
+
+    # raw_pos = self.deg_to_raw_switch[str(model_number)](model_number, goal_position, motor_info[str(servo_id)]['max_angle'])
+
+    response = self.write(servo_id, register_speed, register_speed_length, int(speed))
 
     return response
     

@@ -298,6 +298,9 @@ class DynomixSerialProxy():
   def set_torque_enabled(self, servo_id, enabled):
     return self.sdk_io.set_torque_enabled(servo_id, self.motor_info, enabled)
 
+  def set_speed(self, servo_id, speed):
+    return self.sdk_io.set_speed(servo_id, speed, self.motor_info)
+
   def get_feedback(self, servo_id):
     # Port and packet handler set up
     self.port_handler   = port_h.PortHandler(self.port_name)
