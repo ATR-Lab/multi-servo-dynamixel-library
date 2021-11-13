@@ -234,11 +234,13 @@ def main():
 
     manager = RobotManager(port_list, settings_set)
 
+    # Set arrays for puppet and master arm movement to all 0s
     puppet_arm = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "11": 0, "12": 0, "13": 0, "14": 0, "15": 0}
     puppet_arm_temp = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "11": 0, "12": 0, "13": 0, "14": 0, "15": 0}
     puppet_arm_moving = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "11": 0, "12": 0, "13": 0, "14": 0, "15": 0}
     master_arm = {"21": 0, "22": 0, "23": 0, "24": 0, "25": 0}
 
+    # Enable torque for puppet arms
     manager.ports_by_name["ttyUSB0"].proxy.set_torque_enabled(1, [1])
     manager.ports_by_name["ttyUSB0"].proxy.set_torque_enabled(2, [1])
     manager.ports_by_name["ttyUSB0"].proxy.set_torque_enabled(3, [1])
@@ -250,6 +252,7 @@ def main():
     manager.ports_by_name["ttyUSB0"].proxy.set_torque_enabled(14, [1])
     manager.ports_by_name["ttyUSB0"].proxy.set_torque_enabled(15, [1])
 
+    # Copy present positions in the puppet arm, and control PID interfacing
     for key_arm in puppet_arm:
         idict_tmp = manager.ports_by_name["ttyUSB0"].proxy.get_feedback(int(key_arm))
         puppet_arm[key_arm] = idict_tmp["position"]
@@ -257,6 +260,7 @@ def main():
         puppet_arm_moving[key_arm] = idict_tmp["moving"]
         manager.ports_by_name["ttyUSB0"].proxy.set_speed(int(key_arm), 40)
 
+    # Get positions from master arm
     for key_arm in master_arm:
         idict_tmp = manager.ports_by_name["ttyUSB1"].proxy.get_feedback(int(key_arm))
         master_arm[key_arm] = idict_tmp["position"]
@@ -268,10 +272,12 @@ def main():
         if (time.time() - timestamp < 0.3):
             print("DEBUG TIMESTAMP: %s" % str(timestamp))
             timestamp = time.time()
+            # Paste from puppet arm to master arm
             for idx_id in master_arm:
                 manager.ports_by_name["ttyUSB0"].proxy.set_goal_position((int(idx_id) - 10), master_arm[idx_id])
                 manager.ports_by_name["ttyUSB0"].proxy.set_goal_position((int(idx_id) - 20), (master_arm[idx_id]))
 
+            # Repeat of code above
             for key_arm in puppet_arm:
                 idict_tmp = manager.ports_by_name["ttyUSB0"].proxy.get_feedback(int(key_arm))
                 puppet_arm[key_arm] = idict_tmp["position"]
@@ -282,6 +288,7 @@ def main():
                 idict_tmp = manager.ports_by_name["ttyUSB1"].proxy.get_feedback(int(key_arm))
                 master_arm[key_arm] = idict_tmp["position"]
 
+            # Debug logging
             print("== DEBUG CONSOLE ==")
             print("== PUPPET ARMS ==")
             for key_arm in puppet_arm:
@@ -291,11 +298,6 @@ def main():
             for key_arm in master_arm:
                 print("= ARM ID %s: %s" % (key_arm, str(master_arm[key_arm])))
         timestamp = time.time()
-
-
-        
-        
-
 
 if __name__ == '__main__':
     main()
