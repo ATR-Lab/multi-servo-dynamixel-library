@@ -1,0 +1,8 @@
+prefix=/home/marcus/mintbox/multi-servo-dynamixel-library/mb-ws/devel
+
+Name: dynamixel_manipulation
+Description: Description of dynamixel_manipulation
+Version: 0.0.0
+Cflags: -I/home/marcus/mintbox/multi-servo-dynamixel-library/mb-ws/devel/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime

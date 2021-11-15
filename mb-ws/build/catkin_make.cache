@@ -1,0 +1,2 @@
+dynamixel_manipulation:dynamixel_msgs
+-DCATKIN_DEVEL_PREFIX=/home/marcus/mintbox/multi-servo-dynamixel-library/mb-ws/devel -DCMAKE_INSTALL_PREFIX=/home/marcus/mintbox/multi-servo-dynamixel-library/mb-ws/install -G Unix Makefiles

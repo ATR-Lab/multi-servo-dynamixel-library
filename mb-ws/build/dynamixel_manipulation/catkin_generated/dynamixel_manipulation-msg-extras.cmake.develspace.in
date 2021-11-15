@@ -1,0 +1,2 @@
+set(dynamixel_manipulation_MESSAGE_FILES "")
+set(dynamixel_manipulation_SERVICE_FILES "/home/marcus/mintbox/multi-servo-dynamixel-library/mb-ws/src/dynamixel_manipulation/srv/StartController.srv;/home/marcus/mintbox/multi-servo-dynamixel-library/mb-ws/src/dynamixel_manipulation/srv/StopController.srv;/home/marcus/mintbox/multi-servo-dynamixel-library/mb-ws/src/dynamixel_manipulation/srv/RestartController.srv")

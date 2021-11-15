@@ -1,0 +1,9 @@
+
+<launch>
+ <rosparam file="$(find dynamixel_manipulation)/config/l_arm_joint_controllers.yaml" command="load"/>'
+ <node name="dynomix_spawner" pkg="dynamixel_manipulation" type="dynomix_controller_spawner.py"
+  args="--manager=l_arms_bot
+        --port=l_arm_port
+        l_shoulder_pitch_controller"
+  output="screen"/>
+</launch>

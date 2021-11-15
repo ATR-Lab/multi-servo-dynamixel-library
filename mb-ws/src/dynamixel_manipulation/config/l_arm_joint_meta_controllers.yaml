@@ -1,0 +1,90 @@
+l_shoulder_pitch_controller:
+  controller:
+    package: dynamixel_manipulation
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: l_shoulder_pitch_joint
+  joint_speed: 0.1
+  motor:
+    id: 11
+    init: 2000
+    min: 0
+    max: 4065
+
+l_shoulder_pan_controller:
+  controller:
+    package: dynamixel_manipulation
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: l_shoulder_pan_joint
+  joint_speed: 0.1
+  motor:
+    id: 12
+    init: 2000
+    min: 0
+    max: 4065
+
+l_elbow_pan_controller:
+  controller:
+    package: dynamixel_manipulation
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: l_elbow_pan_joint
+  joint_speed: 0.01
+  motor:
+    id: 13
+    init: 2000
+    min: 0
+    max: 4065
+
+l_foream_roll_controller:
+  controller:
+    package: dynamixel_manipulation
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: l_foream_roll_joint
+  joint_speed: 0.01
+  motor:
+    id: 14
+    init: 2000
+    min: 0
+    max: 4065
+
+l_wrist_pitch_controller:
+  controller:
+    package: dynamixel_manipulation
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: l_wrist_pitch_joint
+  joint_speed: 0.01
+  motor:
+    id: 15
+    init: 2000
+    min: 0
+    max: 4065
+
+l_wrist_roll_controller:
+  controller:
+    package: dynamixel_manipulation
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: l_wrist_roll_joint
+  joint_speed: 0.01
+  motor:
+    id: 16
+    init: 2000
+    min: 0
+    max: 4065
+
+# l_end_effector_controller:
+#   controller:
+#     package: dynamixel_manipulation
+#     module: joint_position_controller
+#     type: JointPositionController
+#   joint_name: l_end_effector_joint
+#   joint_speed: 1.17
+#   motor:
+#     id: 1
+#     init: 100000
+#     min: 0
+#     max: 1023;

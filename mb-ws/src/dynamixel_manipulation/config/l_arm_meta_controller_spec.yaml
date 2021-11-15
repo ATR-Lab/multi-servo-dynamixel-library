@@ -1,0 +1,10 @@
+l_arm_meta_controller:
+  controller:
+    package: dynamixel_manipulation
+    module: joint_trajectory_action_controller
+    type: JointTrajectoryActionController
+  joint_trajectory_action_node:
+    min_velocity: 0
+    max_velocity: 1.0
+    constraints:
+      goal_time: 2.0
